@@ -2,7 +2,7 @@
 
 #![cfg(test)]
 
-use actix::prelude::*;
+use ::actix::prelude::*;
 use actix_web::{client::ClientResponse, test::TestServer};
 use crate::server::State;
 use failure::Fallible;

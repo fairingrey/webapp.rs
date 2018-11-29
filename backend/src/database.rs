@@ -1,6 +1,6 @@
 //! Everything related to database handling
 
-use actix::prelude::*;
+use ::actix::prelude::*;
 use diesel::{
     delete, insert_into,
     prelude::*,
