@@ -2,7 +2,7 @@
 
 #![cfg(test)]
 
-use actix::prelude::*;
+use ::actix::prelude::*;
 use actix_web::test::TestServer;
 use crate::{
     database::DeleteSession,

@@ -1,6 +1,6 @@
 //! Everything related to the actual server implementation
 
-use actix::{prelude::*, SystemRunner};
+use ::actix::{prelude::*, SystemRunner};
 use actix_web::{
     fs::StaticFiles,
     http::{

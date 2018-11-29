@@ -1,6 +1,6 @@
 //! The credential based login request
 
-use actix::{dev::ToEnvelope, prelude::*};
+use ::actix::{dev::ToEnvelope, prelude::*};
 use actix_web::{error::ErrorUnauthorized, AsyncResponder, HttpRequest, HttpResponse};
 use crate::{
     cbor::CborResponseBuilder,
