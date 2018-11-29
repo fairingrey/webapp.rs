@@ -1,10 +1,10 @@
 [server]
-url = "http://127.0.0.1:30080"
+url = "http://0.0.0.0:30080"
 cert = "tls/cert.pem"
 key = "tls/key.pem"
 redirect-from = [
-    "http://127.0.0.1:30081",
-    "https://127.0.0.1:30082",
+    "http://0.0.0.0:30081",
+    "https://0.0.0.0:30082",
 ]
 
 [log]
@@ -12,7 +12,7 @@ actix-web = "debug"
 webapp = "trace"
 
 [postgres]
-host = "127.0.0.1"
+host = "db"
 username = "username"
 password = ""
 database = "database"

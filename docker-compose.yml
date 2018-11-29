@@ -1,0 +1,38 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "0.0.0.0:8000:8000"
+    volumes:
+      - ./:/usr/src/
+    links:
+      - backend
+    command: cargo web start -p webapp-frontend --target=wasm32-unknown-unknown --auto-reload --host 0.0.0.0
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "0.0.0.0:30080:30080"
+      - "0.0.0.0:30081:30081"
+      - "0.0.0.0:30082:30082"
+    volumes:
+      - ./:/usr/src/
+    links:
+      - db
+    environment:
+      - DATABASE_URL=postgres://username@db:5432/database
+    command: bash -c "bash ./wait-for-it.sh db:5432 -q -- diesel setup && cargo watch -w backend -x 'run -p webapp-backend'"
+  db:
+    build: ./db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+      - pgdata:/var/lib/postgresql/data/pgdata
+    env_file:
+      - ./db/.env
+
+volumes:
+  pgdata:
